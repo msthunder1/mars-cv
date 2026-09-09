@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_cv_parts_contacts",
+  "info": {
+    "displayName": "contact",
+    "icon": "information"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "links": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

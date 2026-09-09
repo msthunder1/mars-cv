@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_cv_parts_education_entries",
+  "info": {
+    "displayName": "education-entry",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "degree": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

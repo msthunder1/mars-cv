@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_cv_parts_experience_entries",
+  "info": {
+    "displayName": "experience-entry",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "role": {
+      "type": "string"
+    },
+    "company": {
+      "type": "string"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    },
+    "summary": {
+      "type": "text"
+    },
+    "bullets": {
+      "type": "blocks"
+    },
+    "stack": {
+      "type": "json"
+    },
+    "clients": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

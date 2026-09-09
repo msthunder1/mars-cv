@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_cv_parts_skill_groups",
+  "info": {
+    "displayName": "skill-group",
+    "icon": "chartCircle"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "years": {
+      "type": "integer"
+    },
+    "items": {
+      "type": "json"
+    }
+  },
+  "config": {}
+}

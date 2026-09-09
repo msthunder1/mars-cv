@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0A0B08;
+  --color-paper: #EDECE6;
+  --color-muted: #8A897F;
+  --color-dim: #5F5E5A;
+  --color-rule: #2A2B24;
+  --color-neon-experience: #3DE0B2;
+  --color-neon-skills: #4DA3FF;
+  --color-neon-education: #FFAA3D;
+  --color-neon-interests: #FF4DA3;
+
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-serif: "Source Serif 4", Georgia, serif;
+}
+
+.section-group :where(line, circle) {
+  filter: drop-shadow(0 0 3px currentColor);
+  transition: filter 0.3s ease;
+}
+
+.section-group:hover :where(line, circle) {
+  animation: wire-flicker 2.5s steps(1) infinite;
+}
+
+@keyframes wire-flicker {
+  0%   { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); }
+  3%   { filter: none; opacity: 0.3; }
+  6%   { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); opacity: 1; }
+  7%   { filter: none; opacity: 0.2; }
+  9%   { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); opacity: 1; }
+  30%  { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); }
+  31%  { filter: none; opacity: 0.4; }
+  33%  { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); opacity: 1; }
+  70%  { filter: drop-shadow(0 0 15px currentColor) drop-shadow(0 0 30px currentColor); }
+  71%  { filter: none; opacity: 0.3; }
+  73%  { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); opacity: 1; }
+  100% { filter: drop-shadow(0 0 12px currentColor) drop-shadow(0 0 24px currentColor); }
+}
+
+.fall-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  pointer-events: none;
+  transform: translateY(100%);
+  animation:
+    fall-rise var(--fall-rise-duration) ease-out forwards,
+    fall-leave var(--detail-enter-duration) ease-out forwards;
+  animation-delay:
+    0ms,
+    calc(var(--fall-rise-duration) + var(--fall-expand-duration));
+}
+
+@keyframes fall-rise {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes fall-leave {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+.fall-container.reverse {
+  animation:
+    fall-leave var(--detail-enter-duration) ease-out forwards reverse,
+    fall-rise var(--fall-rise-duration) ease-in forwards reverse;
+  animation-delay:
+    0ms,
+    calc(var(--detail-enter-duration) + var(--fall-expand-duration));
+}
+
+.fall-wire {
+  width: 4px;
+  height: 100%;
+  animation: fall-expand var(--fall-expand-duration) ease-out forwards;
+  animation-delay: var(--fall-rise-duration);
+}
+
+@keyframes fall-expand {
+  0% { width: 4px; }
+  100% { width: var(--fall-wire-width); }
+}
+
+.fall-container.reverse .fall-wire {
+  width: var(--fall-wire-width);
+  animation: fall-shrink var(--fall-expand-duration) ease-in forwards;
+  animation-delay: var(--detail-enter-duration);
+}
+
+@keyframes fall-shrink {
+  0%   { width: var(--fall-wire-width); }
+  100% { width: 4px; }
+}
+
+.home-entering {
+  animation: home-slide-down var(--home-leave-duration) ease-in forwards;
+  animation-delay: calc(var(--detail-enter-duration) + var(--fall-expand-duration));
+  transform: translateY(-100%);
+}
+
+@keyframes home-slide-down {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.home-leaving {
+  animation: home-slide-up var(--home-leave-duration) ease-out forwards;
+}
+
+@keyframes home-slide-up {
+  0%   { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100%); opacity: 0; }
+}
+
+.detail-entering {
+  position: fixed;
+  inset: 0;
+  transform: translateY(100%);
+  animation: detail-slide-up var(--detail-enter-duration) ease-out forwards;
+  animation-delay: calc(var(--home-leave-duration) + var(--fall-expand-duration));
+}
+
+@keyframes detail-slide-up {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.detail-leaving {
+  position: fixed;
+  inset: 0;
+  animation: detail-slide-down var(--detail-enter-duration) ease-in forwards;
+}
+
+@keyframes detail-slide-down {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes streak-fall {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(160vh); }
+}
+
+@keyframes firefly-drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(var(--dx), var(--dy)); }
+}
