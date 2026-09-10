@@ -38,7 +38,7 @@ export function DetailView({ cv, section, onBack, isEntering, isLeaving }: Detai
         className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none"
         style={{
           width: "var(--fall-wire-width)",
-          height: "35vh",
+          height: "45vh",
           background: `linear-gradient(to bottom, ${sectionConfig?.color}, transparent)`,
           opacity: 0.6,
         }}

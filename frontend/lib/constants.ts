@@ -6,3 +6,4 @@ export const DETAIL_ENTER_MS = 800; // Animation for how long it takes for the d
 export const TOTAL_TRANSITION_MS = HOME_LEAVE_MS + FALL_EXPAND_MS + DETAIL_ENTER_MS; // Total time for the entire transition from home to detail view
 
 export const FALL_WIRE_WIDTH_PX = 80;
+export const FALL_WIRE_WIDTH_PX_MOBILE = 40;

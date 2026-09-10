@@ -18,7 +18,10 @@ export function FallTransition({ section, reverse }: FallTransitionProps) {
     <div className={`fall-container ${reverse ? "reverse" : ""}`}>
       <div
         className={`fall-wire ${reverse ? "reverse" : ""}`}
-        style={{ background: sectionConfig.color }}
+        style={{
+          background: `linear-gradient(to right, ${sectionConfig.color}, color-mix(in srgb, ${sectionConfig.color} 80%, var(--color-ink)), ${sectionConfig.color})`,
+          color: sectionConfig.color,
+        }}
       />
       <SpeedStreaks color={sectionConfig.color} />
     </div>

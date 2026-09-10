@@ -2,6 +2,7 @@
 
 import { Wire } from "./Wire";
 import { Endpoint } from "./Endpoint";
+import { EndpointCard } from "./EndpointCard";
 import { SECTIONS } from "@/lib/sections";
 
 import type { SectionKey } from "@/lib/cms";
@@ -13,17 +14,17 @@ interface CircuitWiresProps {
 }
 
 const WIRE_ROUTES_DESKTOP = [
-  { exitX: 185, rowY: 90, endX: 44, endpointY: 340, portraitBottomY: 8 },
-  { exitX: 195, rowY: 170, endX: 148, endpointY: 340, portraitBottomY: 10 },
-  { exitX: 205, rowY: 210, endX: 252, endpointY: 340, portraitBottomY: 10 },
-  { exitX: 215, rowY: 130, endX: 356, endpointY: 340, portraitBottomY: 8 },
+  { exitX: 185, rowY: 90, endX: 44, endpointY: 340, portraitBottomY: 8, endShiftX: 0 },
+  { exitX: 195, rowY: 170, endX: 148, endpointY: 340, portraitBottomY: 10, endShiftX: 0 },
+  { exitX: 205, rowY: 210, endX: 252, endpointY: 340, portraitBottomY: 10, endShiftX: 0 },
+  { exitX: 215, rowY: 130, endX: 356, endpointY: 340, portraitBottomY: 8, endShiftX: 0 },
 ];
 
 const WIRE_ROUTES_MOBILE = [
-  { exitX: 185, rowY: 100, endX: 80, endpointY: 100, portraitBottomY: 8 },
-  { exitX: 195, rowY: 180, endX: 80, endpointY: 180, portraitBottomY: 10 },
-  { exitX: 205, rowY: 260, endX: 80, endpointY: 260, portraitBottomY: 10 },
-  { exitX: 210, rowY: 340, endX: 80, endpointY: 340, portraitBottomY: 8 },
+  { exitX: 185, rowY: 47, endX: 315, endpointY: 80, portraitBottomY: 10, endShiftX: 0 },
+  { exitX: 195, rowY: 38, endX: 325, endpointY: 160, portraitBottomY: 10, endShiftX: 10 },
+  { exitX: 205, rowY: 29, endX: 335, endpointY: 240, portraitBottomY: 10, endShiftX: 20 },
+  { exitX: 215, rowY: 20, endX: 345, endpointY: 320, portraitBottomY: 10, endShiftX: 30 },
 ];
 
 export function CircuitWires({ onSelect }: CircuitWiresProps) {
@@ -56,14 +57,24 @@ export function CircuitWires({ onSelect }: CircuitWiresProps) {
               endX={route.endX}
               endpointY={route.endpointY}
               color={section.color}
+              endShiftX={route.endShiftX}
             />
-            <Endpoint
-              x={route.endX}
-              y={route.endpointY}
-              color={section.color}
-              label={section.label.toLowerCase()}
-              isMobile={isMobile}
-            />
+            {isMobile ? (
+              <EndpointCard
+                x={route.endX - route.endShiftX}
+                y={route.endpointY}
+                color={section.color}
+                label={section.label}
+                preview={section.preview}
+              />
+            ) : (
+              <Endpoint
+                x={route.endX}
+                y={route.endpointY}
+                color={section.color}
+                label={section.label.toLowerCase()}
+              />
+            )}
           </g>
         );
       })}

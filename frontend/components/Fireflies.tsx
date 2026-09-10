@@ -11,6 +11,7 @@ interface Firefly {
   delay: number;
   dx: number;
   dy: number;
+  glow: boolean;
 }
 
 interface FirefliesProps {
@@ -18,7 +19,7 @@ interface FirefliesProps {
   count?: number;
 }
 
-export function Fireflies({ color, count = 30 }: FirefliesProps) {
+export function Fireflies({ color, count = 120 }: FirefliesProps) {
   const [fireflies] = useState<Firefly[]>(() =>
     Array.from({ length: count }, () => ({
       left: Math.random() * 100,
@@ -26,9 +27,10 @@ export function Fireflies({ color, count = 30 }: FirefliesProps) {
       size: 2 + Math.random() * 4,
       opacity: 0.3 + Math.random() * 0.5,
       duration: 3 + Math.random() * 5,
-      delay: Math.random() * 5,
-      dx: -50 + Math.random() * 100,
-      dy: -50 + Math.random() * 100,
+      delay: 0,
+      dx: -50 + Math.random() * 200,
+      dy: -50 + Math.random() * 200,
+      glow: Math.random() < 0.2,
     }))
   );
 
@@ -46,7 +48,9 @@ export function Fireflies({ color, count = 30 }: FirefliesProps) {
               height: `${f.size}px`,
               background: color,
               opacity: f.opacity,
-              boxShadow: `0 0 8px ${color}`,
+              boxShadow: f.glow
+                ? `0 0 20px ${color}, 0 0 40px ${color}, 0 0 80px ${color}`
+                : `0 0 8px ${color}`,
               animation: `firefly-drift ${f.duration}s ease-in-out ${f.delay}s infinite alternate`,
               "--dx": `${f.dx}px`,
               "--dy": `${f.dy}px`,

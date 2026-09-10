@@ -7,6 +7,7 @@ import {
   FALL_EXPAND_MS,
   DETAIL_ENTER_MS,
   FALL_WIRE_WIDTH_PX,
+  FALL_WIRE_WIDTH_PX_MOBILE,
 } from "@/lib/constants";
 
 const mono = JetBrains_Mono({
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           "--fall-expand-duration": `${FALL_EXPAND_MS}ms`,
           "--detail-enter-duration": `${DETAIL_ENTER_MS}ms`,
           "--fall-wire-width": `${FALL_WIRE_WIDTH_PX}px`,
+          "--fall-wire-width-mobile": `${FALL_WIRE_WIDTH_PX_MOBILE}px`,
         } as React.CSSProperties
       }
     >

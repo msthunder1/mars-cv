@@ -114,7 +114,13 @@
   width: 4px;
   height: 100%;
   animation: fall-expand var(--fall-expand-duration) ease-out forwards;
-  animation-delay: var(--fall-rise-duration);
+  animation-delay: var(--home-leave-duration);
+  box-shadow:
+    0 0 80px currentColor,
+    0 0 200px currentColor,
+    0 0 400px currentColor,
+    inset 0 0 10px rgba(255, 255, 255, 0.15);
+  filter: brightness(1);
 }
 
 @keyframes fall-expand {
@@ -220,5 +226,11 @@
   }
   100% {
     transform: translate(var(--dx), var(--dy));
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    --fall-wire-width: var(--fall-wire-width-mobile) !important;
   }
 }

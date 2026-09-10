@@ -7,11 +7,16 @@ interface EndpointProps {
 }
 
 export function Endpoint({ x, y, color, label, isMobile }: EndpointProps) {
-  const labelY = isMobile ? y + 30 : y + 20;
   const charWidth = isMobile ? 10 : 4;
-  const labelPadX = isMobile ? 12 : 12;
+  const labelPadX = 12;
   const labelHeight = isMobile ? 30 : 16;
   const labelWidth = label.length * charWidth + labelPadX * 2;
+
+  // Desktop: label below circle; Mobile: label left of circle
+  const rectX = isMobile ? x - labelWidth - 12 : x - labelWidth / 2;
+  const rectY = isMobile ? y - labelHeight / 2 : y + 20 - labelHeight / 2;
+  const textX = isMobile ? x - labelWidth / 2 - 12 : x;
+  const textY = isMobile ? y : y + 20;
 
   return (
     <>
@@ -26,8 +31,8 @@ export function Endpoint({ x, y, color, label, isMobile }: EndpointProps) {
         />
       </g>
       <rect
-        x={x - labelWidth / 2}
-        y={labelY - labelHeight / 2}
+        x={rectX}
+        y={rectY}
         width={labelWidth}
         height={labelHeight}
         rx={6}
@@ -37,8 +42,8 @@ export function Endpoint({ x, y, color, label, isMobile }: EndpointProps) {
         vectorEffect="non-scaling-stroke"
       />
       <text
-        x={x}
-        y={labelY}
+        x={textX}
+        y={textY}
         fill={color}
         fontSize="7"
         textAnchor="middle"

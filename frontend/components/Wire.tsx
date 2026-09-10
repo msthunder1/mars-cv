@@ -5,9 +5,20 @@ interface WireProps {
   endX: number;
   endpointY: number;
   color: string;
+  endShiftX?: number;
 }
 
-export function Wire({ exitX, portraitBottomY, rowY, endX, endpointY, color }: WireProps) {
+export function Wire({
+  exitX,
+  portraitBottomY,
+  rowY,
+  endX,
+  endpointY,
+  color,
+  endShiftX = 0,
+}: WireProps) {
+  const finalX = endX - endShiftX;
+
   return (
     <g stroke={color} color={color}>
       <line
@@ -37,6 +48,17 @@ export function Wire({ exitX, portraitBottomY, rowY, endX, endpointY, color }: W
         strokeWidth={2}
         vectorEffect="non-scaling-stroke"
       />
+      {endShiftX > 0 && (
+        <line
+          x1={endX}
+          y1={endpointY}
+          x2={finalX}
+          y2={endpointY}
+          stroke={color}
+          strokeWidth={2}
+          vectorEffect="non-scaling-stroke"
+        />
+      )}
     </g>
   );
 }
