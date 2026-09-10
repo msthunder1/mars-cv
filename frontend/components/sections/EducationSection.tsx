@@ -11,7 +11,7 @@ function formatYear(date?: string): string {
 }
 
 export function EducationSection({ education }: EducationSectionProps) {
-  const color = SECTIONS.find(s => s.key === "education")?.color ?? "#FFAA3D";
+  const color = SECTIONS.find((s) => s.key === "education")?.color ?? "#FFAA3D";
 
   const sorted = [...education].sort((a, b) => {
     return (b.start ?? "").localeCompare(a.start ?? "");

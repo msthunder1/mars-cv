@@ -1,17 +1,24 @@
 import { SECTIONS } from "@/lib/sections";
 import {
-  BookOpen, Pencil, PenLine, Dumbbell, Sparkles, Telescope, TrendingUp, CircleDot,
+  BookOpen,
+  Pencil,
+  PenLine,
+  Dumbbell,
+  Sparkles,
+  Telescope,
+  TrendingUp,
+  CircleDot,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   "Reading books": BookOpen,
-  "Drawing": Pencil,
-  "Writing": PenLine,
-  "Training": Dumbbell,
-  "Mythology": Sparkles,
-  "Astronomy": Telescope,
-  "Trading": TrendingUp,
+  Drawing: Pencil,
+  Writing: PenLine,
+  Training: Dumbbell,
+  Mythology: Sparkles,
+  Astronomy: Telescope,
+  Trading: TrendingUp,
 };
 
 const TILTS = [-4, 3, -2, 5, -3, 2, -5, 4];
@@ -21,7 +28,7 @@ interface InterestsSectionProps {
 }
 
 export function InterestsSection({ interests }: InterestsSectionProps) {
-  const color = SECTIONS.find(s => s.key === "interests")?.color ?? "#FF4DA3";
+  const color = SECTIONS.find((s) => s.key === "interests")?.color ?? "#FF4DA3";
 
   return (
     <section id="interests" className="max-w-3xl mx-auto">

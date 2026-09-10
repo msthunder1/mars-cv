@@ -12,7 +12,7 @@ const LEVEL_LABELS: Record<number, string> = {
 };
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
-  const color = SECTIONS.find(s => s.key === "skills")?.color ?? "#4DA3FF";
+  const color = SECTIONS.find((s) => s.key === "skills")?.color ?? "#4DA3FF";
 
   return (
     <section id="skills" className="max-w-3xl mx-auto">
@@ -21,7 +21,10 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
       <div className="space-y-10">
         {skills.map((group) => (
           <div key={group.id}>
-            <div className="flex items-baseline justify-between mb-4 pb-2 border-b" style={{ borderColor: `${color}33` }}>
+            <div
+              className="flex items-baseline justify-between mb-4 pb-2 border-b"
+              style={{ borderColor: `${color}33` }}
+            >
               <h3 className="font-serif text-xl text-paper">{group.label}</h3>
               {group.years && (
                 <span className="font-mono text-xs text-dim">
@@ -33,9 +36,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3">
               {group.items.map((skill, index) => (
                 <div key={`${group.id}-${index}`} className="flex items-center gap-3">
-                  <span className="font-mono text-sm text-paper flex-1">
-                    {skill.name}
-                  </span>
+                  <span className="font-mono text-sm text-paper flex-1">{skill.name}</span>
                   <div className="flex gap-1">
                     {[1, 2, 3].map((n) => (
                       <div

@@ -24,7 +24,7 @@ function formatDate(date?: string): string {
 }
 
 export function ExperienceSection({ experience }: ExperienceSectionProps) {
-  const color = SECTIONS.find(s => s.key === "experience")?.color ?? "#3DE0B2";
+  const color = SECTIONS.find((s) => s.key === "experience")?.color ?? "#3DE0B2";
 
   const sorted = [...experience].sort((a, b) => {
     return (b.start ?? "").localeCompare(a.start ?? "");
@@ -36,11 +36,7 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
 
       <div className="space-y-8">
         {sorted.map((job) => (
-          <article
-            key={job.id}
-            className="pl-6 border-l-2 pb-2"
-            style={{ borderColor: color }}
-          >
+          <article key={job.id} className="pl-6 border-l-2 pb-2" style={{ borderColor: color }}>
             <div className="flex items-baseline justify-between flex-wrap gap-2 mb-1">
               <h3 className="font-serif text-xl text-paper">
                 {job.role} <span className="text-muted font-mono text-sm">@ {job.company}</span>
@@ -51,16 +47,10 @@ export function ExperienceSection({ experience }: ExperienceSectionProps) {
             </div>
 
             {job.clients && job.clients.length > 0 && (
-              <p className="font-mono text-xs text-dim mb-3">
-                {job.clients.join(" · ")}
-              </p>
+              <p className="font-mono text-xs text-dim mb-3">{job.clients.join(" · ")}</p>
             )}
 
-            {job.summary && (
-              <p className="text-muted italic mb-4 leading-relaxed">
-                {job.summary}
-              </p>
-            )}
+            {job.summary && <p className="text-muted italic mb-4 leading-relaxed">{job.summary}</p>}
 
             {job.bullets && job.bullets.length > 0 && (
               <ul className="space-y-1 mb-4 list-disc list-outside pl-5 text-paper">

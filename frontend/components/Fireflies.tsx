@@ -38,18 +38,20 @@ export function Fireflies({ color, count = 30 }: FirefliesProps) {
         <div
           key={i}
           className="absolute rounded-full"
-          style={{
-            left: `${f.left}%`,
-            top: `${f.top}%`,
-            width: `${f.size}px`,
-            height: `${f.size}px`,
-            background: color,
-            opacity: f.opacity,
-            boxShadow: `0 0 8px ${color}`,
-            animation: `firefly-drift ${f.duration}s ease-in-out ${f.delay}s infinite alternate`,
-            "--dx": `${f.dx}px`,
-            "--dy": `${f.dy}px`,
-          } as React.CSSProperties}
+          style={
+            {
+              left: `${f.left}%`,
+              top: `${f.top}%`,
+              width: `${f.size}px`,
+              height: `${f.size}px`,
+              background: color,
+              opacity: f.opacity,
+              boxShadow: `0 0 8px ${color}`,
+              animation: `firefly-drift ${f.duration}s ease-in-out ${f.delay}s infinite alternate`,
+              "--dx": `${f.dx}px`,
+              "--dy": `${f.dy}px`,
+            } as React.CSSProperties
+          }
         />
       ))}
     </div>

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
-import { HOME_LEAVE_MS, FALL_RISE_MS, FALL_EXPAND_MS, DETAIL_ENTER_MS, FALL_WIRE_WIDTH_PX } from "@/lib/constants";
+import {
+  HOME_LEAVE_MS,
+  FALL_RISE_MS,
+  FALL_EXPAND_MS,
+  DETAIL_ENTER_MS,
+  FALL_WIRE_WIDTH_PX,
+} from "@/lib/constants";
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -23,15 +29,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${mono.variable} ${serif.variable} h-full`}
-      style={{
-        "--home-leave-duration": `${HOME_LEAVE_MS}ms`,
-        "--fall-rise-duration": `${FALL_RISE_MS}ms`,
-        "--fall-expand-duration": `${FALL_EXPAND_MS}ms`,
-        "--detail-enter-duration": `${DETAIL_ENTER_MS}ms`,
-        "--fall-wire-width": `${FALL_WIRE_WIDTH_PX}px`,
-      } as React.CSSProperties}
+      style={
+        {
+          "--home-leave-duration": `${HOME_LEAVE_MS}ms`,
+          "--fall-rise-duration": `${FALL_RISE_MS}ms`,
+          "--fall-expand-duration": `${FALL_EXPAND_MS}ms`,
+          "--detail-enter-duration": `${DETAIL_ENTER_MS}ms`,
+          "--fall-wire-width": `${FALL_WIRE_WIDTH_PX}px`,
+        } as React.CSSProperties
+      }
     >
-      <body className="min-h-full flex flex-col bg-ink text-paper font-mono antialiased">{children}</body>
+      <body className="min-h-full flex flex-col bg-ink text-paper font-mono antialiased">
+        {children}
+      </body>
     </html>
   );
 }
