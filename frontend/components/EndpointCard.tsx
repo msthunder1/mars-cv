@@ -42,7 +42,8 @@ export function EndpointCard({ x, y, color, label, preview }: EndpointCardProps)
         fill={color}
         fontSize="11"
         fontWeight="600"
-        style={{ letterSpacing: 1, textTransform: "uppercase" }}
+        className="uppercase"
+        style={{ letterSpacing: 1 }}
       >
         {label}
       </text>

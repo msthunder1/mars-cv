@@ -3,20 +3,13 @@ interface EndpointProps {
   y: number;
   color: string;
   label: string;
-  isMobile?: boolean;
 }
 
-export function Endpoint({ x, y, color, label, isMobile }: EndpointProps) {
-  const charWidth = isMobile ? 10 : 4;
+export function Endpoint({ x, y, color, label }: EndpointProps) {
+  const charWidth = 6;
   const labelPadX = 12;
-  const labelHeight = isMobile ? 30 : 16;
+  const labelHeight = 20;
   const labelWidth = label.length * charWidth + labelPadX * 2;
-
-  // Desktop: label below circle; Mobile: label left of circle
-  const rectX = isMobile ? x - labelWidth - 12 : x - labelWidth / 2;
-  const rectY = isMobile ? y - labelHeight / 2 : y + 20 - labelHeight / 2;
-  const textX = isMobile ? x - labelWidth / 2 - 12 : x;
-  const textY = isMobile ? y : y + 20;
 
   return (
     <>
@@ -24,15 +17,15 @@ export function Endpoint({ x, y, color, label, isMobile }: EndpointProps) {
         <circle
           cx={x}
           cy={y}
-          r={7}
+          r={4}
           fill="var(--color-ink)"
-          strokeWidth={1}
+          strokeWidth={3}
           vectorEffect="non-scaling-stroke"
         />
       </g>
       <rect
-        x={rectX}
-        y={rectY}
+        x={x - labelWidth / 2}
+        y={y + 20 - labelHeight / 2}
         width={labelWidth}
         height={labelHeight}
         rx={6}
@@ -42,13 +35,13 @@ export function Endpoint({ x, y, color, label, isMobile }: EndpointProps) {
         vectorEffect="non-scaling-stroke"
       />
       <text
-        x={textX}
-        y={textY}
+        x={x}
+        y={y + 20}
         fill={color}
         fontSize="7"
         textAnchor="middle"
         dominantBaseline="middle"
-        className="sm:text-[8px] text-[16px]"
+        className="uppercase"
       >
         {label}
       </text>
